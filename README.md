@@ -6,6 +6,7 @@ Ancient Perl 5 with App::cpanminus built on Debian Buster.
 Available Perl versions are:
 
 + 5.10.1
++ 5.16.3
 + more if in need
 
 USAGE
