@@ -1,6 +1,6 @@
 REGISTORY := yowcow/debian-buster-perl5
 
-VERSIONS := 5.10.1 5.16.3
+VERSIONS ?= 5.10.1 5.16.3 5.28.0
 DOCKERFILES := $(foreach ver,$(VERSIONS),$(ver)/Dockerfile)
 BUILDTARGETS := $(foreach ver,$(VERSIONS),build-$(ver))
 
@@ -16,6 +16,7 @@ debug-%:
 	docker run --rm -it $(REGISTORY):$* bash
 
 %/Dockerfile: debian-buster-perl5.Dockerfile
+	mkdir -p $(dir $@)
 	cat $< | sed -e 's/##PERL_VERSION##/$*/g' > $@
 
 .PHONY: all build build-* debug-*
